@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sentinel Settings</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            min-width: 300px;
+            background: #0f172a;
+            color: white;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            color: white;
+            border-radius: 4px;
+        }
+
+        button {
+            background: #3b82f6;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #2563eb;
+        }
+
+        .status {
+            margin-top: 10px;
+            font-size: 12px;
+            text-align: center;
+            height: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>🔐 Authentication</h2>
+    <label for="token">API Token (from secrets.json)</label>
+    <input type="password" id="token" placeholder="Paste Token Here">
+
+    <button id="save">Save Token</button>
+    <div id="status" class="status"></div>
+
+    <script src="options.js"></script>
+</body>
+
+</html>

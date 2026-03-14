@@ -1,0 +1,167 @@
+[
+    {
+        "signal": {
+            "signal_id": "REALTIME-LOG-1771694718",
+            "symbol": "BTCUSD",
+            "strategy": "TREND_PULLBACK",
+            "direction": "CALL",
+            "index_entry": 50000.0,
+            "index_sl": 49500.0,
+            "index_tp": 51000.0,
+            "rr": 2.0,
+            "timestamp": 1771694718490,
+            "bar_time": "2026-02-21T22:55:18Z",
+            "strategy_version": "1.0",
+            "source": "EXTENSION"
+        },
+        "option": {
+            "strike": 50000,
+            "type": "CE",
+            "expiry_mode": "WEEKLY",
+            "lot_size": 1
+        },
+        "risk": {
+            "sl_price": 19350.45,
+            "tp_price": 25800.6,
+            "method": "PERCENTAGE",
+            "estimated_premium": 21500.5
+        },
+        "status": "FULLY_PROTECTED",
+        "fill": {
+            "price": 21500.5,
+            "qty": 50
+        }
+    },
+    {
+        "signal": {
+            "signal_id": "REALTIME-LOG-1771694539",
+            "symbol": "BTCUSD",
+            "strategy": "TREND_PULLBACK",
+            "direction": "CALL",
+            "index_entry": 50000.0,
+            "index_sl": 49500.0,
+            "index_tp": 51000.0,
+            "rr": 2.0,
+            "timestamp": 1771694539171,
+            "bar_time": "2026-02-21T22:52:19Z",
+            "strategy_version": "1.0",
+            "source": "EXTENSION"
+        },
+        "option": {
+            "strike": 50000,
+            "type": "CE",
+            "expiry_mode": "WEEKLY",
+            "lot_size": 1
+        },
+        "risk": {
+            "sl_price": 19350.45,
+            "tp_price": 25800.6,
+            "method": "PERCENTAGE",
+            "estimated_premium": 21500.5
+        },
+        "status": "FULLY_PROTECTED",
+        "fill": {
+            "price": 21500.5,
+            "qty": 50
+        }
+    },
+    {
+        "signal": {
+            "signal_id": "LOG-VERIFY-001",
+            "symbol": "ETHUSD",
+            "strategy": "RANGE_REJECTION",
+            "direction": "PUT",
+            "index_entry": 2800.0,
+            "index_sl": 2850.0,
+            "index_tp": 2700.0,
+            "rr": 2.0,
+            "timestamp": 1771694130436,
+            "bar_time": "2026-02-21T22:45:00",
+            "strategy_version": "1.0",
+            "source": "EXTENSION"
+        },
+        "option": {
+            "strike": 2800,
+            "type": "PE",
+            "expiry_mode": "WEEKLY",
+            "lot_size": 1
+        },
+        "risk": {
+            "sl_price": 19350.45,
+            "tp_price": 25800.6,
+            "method": "PERCENTAGE",
+            "estimated_premium": 21500.5
+        },
+        "status": "FULLY_PROTECTED",
+        "fill": {
+            "price": 21500.5,
+            "qty": 50
+        }
+    },
+    {
+        "signal": {
+            "signal_id": "REALTIME-VERIFY-002",
+            "symbol": "BTCUSD",
+            "strategy": "RANGE_REJECTION",
+            "direction": "CALL",
+            "index_entry": 52000.0,
+            "index_sl": 51500.0,
+            "index_tp": 53000.0,
+            "rr": 2.0,
+            "timestamp": 1771693867986,
+            "bar_time": "2026-02-21T22:35:00",
+            "strategy_version": "1.0",
+            "source": "EXTENSION"
+        },
+        "option": {
+            "strike": 52000,
+            "type": "CE",
+            "expiry_mode": "WEEKLY",
+            "lot_size": 1
+        },
+        "risk": {
+            "sl_price": 19350.45,
+            "tp_price": 25800.6,
+            "method": "PERCENTAGE",
+            "estimated_premium": 21500.5
+        },
+        "status": "FULLY_PROTECTED",
+        "fill": {
+            "price": 21500.5,
+            "qty": 50
+        }
+    },
+    {
+        "signal": {
+            "signal_id": "TEST-SIG-X1",
+            "symbol": "NIFTY",
+            "strategy": "RANGE_REJECTION",
+            "direction": "CALL",
+            "index_entry": 21500.0,
+            "index_sl": 21450.0,
+            "index_tp": 21600.0,
+            "rr": 2.5,
+            "timestamp": 1769911604899,
+            "bar_time": "2026-01-31T23:59:00",
+            "strategy_version": "1.0",
+            "source": "EXTENSION"
+        },
+        "option": {
+            "strike": 21500,
+            "type": "CE",
+            "expiry_mode": "WEEKLY",
+            "lot_size": 1
+        },
+        "risk": {
+            "sl_price": 19350.45,
+            "tp_price": 25800.6,
+            "method": "PERCENTAGE",
+            "estimated_premium": 21500.5
+        },
+        "status": "FULLY_PROTECTED",
+        "fill": {
+            "price": 21500.5,
+            "qty": 50
+        }
+    }
+]

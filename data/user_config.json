@@ -1,0 +1,30 @@
+{
+  "option": {
+    "option_mode": "ATM",
+    "strike_step": 100,
+    "strike_offset": 0,
+    "expiry_type": "WEEKLY",
+    "lot_size": 1,
+    "max_premium_per_lot": null
+  },
+  "risk": {
+    "mode": "PERCENTAGE",
+    "assumed_delta_atm": 0.5,
+    "assumed_delta_itm_step": 0.1,
+    "assumed_delta_otm_step": 0.1,
+    "sl_percentage": 10.0,
+    "tp_percentage": 20.0,
+    "sl_points": 10.0,
+    "tp_points": 20.0
+  },
+  "discipline": {
+    "max_trades_per_day": 4,
+    "max_daily_loss": -2000.0,
+    "max_daily_profit": 4000.0,
+    "min_rr_ratio": 2.0,
+    "trade_qty": 100,
+    "session_start": "00:00",
+    "session_end": "23:59",
+    "last_entry": "23:55"
+  }
+}

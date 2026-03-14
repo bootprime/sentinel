@@ -1,0 +1,35 @@
+{
+    "manifest_version": 3,
+    "name": "Sentinel Bridge",
+    "version": "1.0",
+    "description": "Bridges TradingView signals to Sentinel Backend",
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "storage"
+    ],
+    "host_permissions": [
+        "http://127.0.0.1:8001/*",
+        "https://*.tradingview.com/*"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*.tradingview.com/chart/*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "options_ui": {
+        "page": "options.html",
+        "open_in_tab": false
+    }
+}

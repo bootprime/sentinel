@@ -1,0 +1,10 @@
+{
+    "signal_id": "TEST-SIG-001",
+    "symbol": "NIFTY",
+    "direction": "CALL",
+    "index_entry": 21500,
+    "index_sl": 21450,
+    "index_tp": 21600,
+    "bar_time": "2026-01-31T23:58:00",
+    "strategy": "RANGE_REJECTION"
+}

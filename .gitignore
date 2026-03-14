@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Sentinel specific - CRITICAL
+data/credentials.json
+data/state.json
+data/journal.json
+data/trade_audit.csv
+data/*.db
+data/*.sqlite
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Node
+node_modules/
+npm-debug.log*
+frontend/dist/
+frontend/build/
+
+# Environment
+.env
+.env.local
+
+# Temp and error files
+.pytest_cache/
+error_trace.txt
+verify_output.txt
+test_signal.json

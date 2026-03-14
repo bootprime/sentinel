@@ -1,0 +1,72 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © Sentinel_System
+
+//@version=6
+strategy("Sentinel A: Trend Pullback", overlay=true, margin_long=100, margin_short=100)
+
+// --- INPUTS ---
+i_sl_p = input.float(0.5, "SL %")
+i_tp_p = input.float(1.0, "TP %")
+i_ema_len = input.int(20, "EMA Length")
+
+// --- INDICATORS ---
+ema = ta.ema(close, i_ema_len)
+
+// --- LOGIC ---
+trend_up = close > ema
+trend_down = close < ema
+// Simple Pullback Logic for template
+long_cond = trend_up and close[1] < open[1] and close > open // Bullish engulfing in uptrend? (Simplified)
+short_cond = trend_down and close[1] > open[1] and close < open
+
+// --- EXECUTION ---
+var string signal_id = ""
+var string direction = ""
+var float entry_price = 0.0
+var float sl_price = 0.0
+var float tp_price = 0.0
+var float rr = 0.0
+var int timestamp = 0
+
+if long_cond
+    entry_price := close
+    sl_price := close * (1 - i_sl_p/100)
+    tp_price := close * (1 + i_tp_p/100)
+    direction := "CALL"
+    signal_id := str.tostring(time) + "_LONG"
+    rr := (tp_price - entry_price) / (entry_price - sl_price)
+    timestamp := time
+    strategy.entry("Long", strategy.long)
+
+if short_cond
+    entry_price := close
+    sl_price := close * (1 + i_sl_p/100)
+    tp_price := close * (1 - i_tp_p/100)
+    direction := "PUT"
+    signal_id := str.tostring(time) + "_SHORT"
+    rr := (entry_price - tp_price) / (sl_price - entry_price)
+    timestamp := time
+    strategy.entry("Short", strategy.short)
+
+// --- SIGNAL TABLE (JSON GENERATOR) ---
+var table sig_table = table.new(position.bottom_right, 1, 1, bgcolor=color.black)
+
+// Helper to format JSON (Manually constructed string)
+f_get_json() =>
+    "{" + 
+      "\"signal_id\": \"" + signal_id + "\"," + 
+      "\"symbol\": \"" + syminfo.ticker + "\"," + 
+      "\"strategy\": \"TREND_PULLBACK\"," + 
+      "\"direction\": \"" + direction + "\"," + 
+      "\"entry\": " + str.tostring(entry_price) + "," + 
+      "\"sl\": " + str.tostring(sl_price) + "," + 
+      "\"tp\": " + str.tostring(tp_price) + "," + 
+      "\"rr\": " + str.tostring(rr) + "," + 
+      "\"timestamp\": " + str.tostring(timestamp) + "," + 
+      "\"bar_time\": \"" + str.format("{0,date,yyyy-MM-dd HH:mm:ss}", time) + "\"," + 
+      "\"strategy_version\": \"1.0\"" + 
+    "}"
+
+// Update Table only on new bar or signal
+if barstate.isconfirmed and (long_cond or short_cond)
+    table.cell(sig_table, 0, 0, f_get_json(), text_color=color.white, text_size=size.small)

@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-primary: hsl(var(--primary));
+  --color-secondary: hsl(var(--secondary));
+  --color-accent: hsl(var(--accent));
+  --color-muted: hsl(var(--muted));
+  --color-border: hsl(var(--border));
+}
+
+:root {
+  /* HSL Colors */
+  --background: 224 71% 4%;
+  --foreground: 213 31% 91%;
+
+  --primary: 210 40% 98%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+
+  --border: 217.2 32.6% 17.5%;
+
+  --success: 142 76% 36%;
+  --error: 346 87% 43%;
+  --warning: 45 93% 47%;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Glassmorphism Utility */
+.glass {
+  @apply bg-black/20 backdrop-blur-lg border border-white/10 shadow-xl;
+  background: rgba(17, 24, 39, 0.7);
+}
+
+.glass-panel {
+  @apply rounded-xl border border-white/5 bg-gray-900/50 backdrop-blur-md p-6;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}

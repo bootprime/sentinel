@@ -1,0 +1,66 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © Sentinel_System
+
+//@version=6
+strategy("Sentinel B: Range Rejection", overlay=true, margin_long=100, margin_short=100)
+
+// --- INPUTS ---
+i_range_high = input.float(20000, "Range High")
+i_range_low = input.float(19000, "Range Low")
+
+// --- LOGIC ---
+// Rejection from high
+short_cond = high >= i_range_high and close < i_range_high
+// Rejection from low
+long_cond = low <= i_range_low and close > i_range_low
+
+// --- EXECUTION ---
+var string signal_id = ""
+var string direction = ""
+var float entry_price = 0.0
+var float sl_price = 0.0
+var float tp_price = 0.0
+var float rr = 0.0
+var int timestamp = 0
+
+// Hardcoded logic for template
+if long_cond
+    entry_price := close
+    sl_price := low - (high-low) // recent swing low
+    tp_price := i_range_high
+    direction := "CALL"
+    signal_id := str.tostring(time) + "_R_LONG"
+    rr := (tp_price - entry_price) / (entry_price - sl_price)
+    timestamp := time
+    strategy.entry("Long", strategy.long)
+
+if short_cond
+    entry_price := close
+    sl_price := high + (high-low) // recent swing high
+    tp_price := i_range_low
+    direction := "PUT"
+    signal_id := str.tostring(time) + "_R_SHORT"
+    rr := (entry_price - tp_price) / (sl_price - entry_price)
+    timestamp := time
+    strategy.entry("Short", strategy.short)
+
+// --- SIGNAL TABLE (JSON GENERATOR) ---
+var table sig_table = table.new(position.bottom_right, 1, 1, bgcolor=color.black)
+
+f_get_json() =>
+    "{" + 
+      "\"signal_id\": \"" + signal_id + "\"," + 
+      "\"symbol\": \"" + syminfo.ticker + "\"," + 
+      "\"strategy\": \"RANGE_REJECTION\"," + 
+      "\"direction\": \"" + direction + "\"," + 
+      "\"entry\": " + str.tostring(entry_price) + "," + 
+      "\"sl\": " + str.tostring(sl_price) + "," + 
+      "\"tp\": " + str.tostring(tp_price) + "," + 
+      "\"rr\": " + str.tostring(rr) + "," + 
+      "\"timestamp\": " + str.tostring(timestamp) + "," + 
+      "\"bar_time\": \"" + str.format("{0,date,yyyy-MM-dd HH:mm:ss}", time) + "\"," + 
+      "\"strategy_version\": \"1.0\"" + 
+    "}"
+
+if barstate.isconfirmed and (long_cond or short_cond)
+    table.cell(sig_table, 0, 0, f_get_json(), text_color=color.white, text_size=size.small)
